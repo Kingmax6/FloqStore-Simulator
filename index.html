@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Floquinho Store | NYZ Interactive</title>
+  <title>Floquinho Store™</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap');
-    body { font-family: 'Rajdhani', sans-serif; }
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+    body { font-family: 'Space Grotesk', sans-serif; }
     .estrela { cursor: pointer; transition: all 0.2s; }
     .estrela:hover { transform: scale(1.2); }
   </style>
@@ -52,7 +52,7 @@
         <div class="w-6 h-0.5 bg-white"></div>
         <div class="w-6 h-0.5 bg-white"></div>
       </button>
-      <h1 class="text-2xl font-bold">Floquinho Store</h1>
+      <h1 class="text-2xl font-bold">Floquinho Store™</h1>
       <button onclick="ganharSaches()" class="bg-orange-500/20 border border-orange-500 px-3 py-1 rounded-full hover:bg-orange-500/30">
         <span class="text-sm">💰 <span id="saldo" class="font-bold">500</span></span>
       </button>
@@ -70,9 +70,9 @@
     <!-- Lista de produtos -->
     <main class="divide-y divide-neutral-800" id="produtos"></main>
 
-    <!-- Footer - ORIGINAL MANTIDO -->
+    <!-- Footer -->
     <footer class="py-12 text-center text-neutral-500 text-sm border-t border-neutral-800 mt-8">
-      <p>AgainstTime Pre.</p>
+      <p>Nyz Interactive</p>
       <p class="mt-2">© 2026 Floquinho Inc. Todos os direitos reservados ao sono.</p>
     </footer>
 
@@ -110,10 +110,6 @@
   </div>
 
 <script>
-// NYZ Interactive - FloqStore Simulator
-const STUDIO_NAME = "NYZ Interactive";
-const STUDIO_TAGLINE = "Nexus Yield Zone";
-
 const produtos = [
   {id: 1, emoji: "📦", nome: "Caixa de Papelão Semi-Nova", preco: 50, precoAntigo: 150, desc: "Usada só 3 sonecas. Cheirinho incluso.", desconto: "66% OFF"},
   {id: 2, emoji: "😴", nome: "Soneca Certificada 16h", preco: 120, precoAntigo: 400, desc: "Com certificado assinado com a patinha.", desconto: "70% OFF"},
@@ -124,32 +120,32 @@ const produtos = [
 ];
 
 // CARREGA OS DADOS SALVOS OU USA PADRÃO
-let carrinho = JSON.parse(localStorage.getItem('nyz_carrinho')) || [];
-let jaAvaliou = localStorage.getItem('nyz_avaliou') === 'true';
-let saldoSaches = parseInt(localStorage.getItem('nyz_saldo')) || 500;
-let codigoUsado = localStorage.getItem('nyz_codigo') === 'true';
-let ultimoGanho = parseInt(localStorage.getItem('nyz_ultimoGanho')) || 0;
+let carrinho = JSON.parse(localStorage.getItem('floquinho_carrinho')) || [];
+let jaAvaliou = localStorage.getItem('floquinho_avaliou') === 'true';
+let saldoSaches = parseInt(localStorage.getItem('floquinho_saldo')) || 500;
+let codigoUsado = localStorage.getItem('floquinho_codigo') === 'true';
+let ultimoGanho = parseInt(localStorage.getItem('floquinho_ultimoGanho')) || 0;
 
 // FUNÇÃO PRA SALVAR TUDO
 function salvarDados() {
-  localStorage.setItem('nyz_saldo', saldoSaches);
-  localStorage.setItem('nyz_carrinho', JSON.stringify(carrinho));
-  localStorage.setItem('nyz_avaliou', jaAvaliou);
-  localStorage.setItem('nyz_codigo', codigoUsado);
-  localStorage.setItem('nyz_ultimoGanho', ultimoGanho);
+  localStorage.setItem('floquinho_saldo', saldoSaches);
+  localStorage.setItem('floquinho_carrinho', JSON.stringify(carrinho));
+  localStorage.setItem('floquinho_avaliou', jaAvaliou);
+  localStorage.setItem('floquinho_codigo', codigoUsado);
+  localStorage.setItem('floquinho_ultimoGanho', ultimoGanho);
 }
 
 function atualizarSaldo() {
   document.getElementById('saldo').innerText = saldoSaches;
   document.getElementById('saldoMenu').innerText = saldoSaches;
-  salvarDados();
+  salvarDados(); // Salva sempre que atualiza
 }
 
 function ganharSaches() {
   const agora = Date.now();
   if(agora - ultimoGanho < 30000) {
     const falta = Math.ceil((30000 - (agora - ultimoGanho)) / 1000);
-    mostrarModal('⏰', 'Calma humano!', `NYZ tá contando sachês... Volta em ${falta}s miau`);
+    mostrarModal('⏰', 'Calma humano!', `Floquinho tá contando sachês... Volta em ${falta}s miau`);
     return;
   }
   
@@ -157,12 +153,12 @@ function ganharSaches() {
   saldoSaches += ganho;
   ultimoGanho = agora;
   atualizarSaldo();
-  mostrarModal('💰', 'Sachês Recebidos!', `Você fez carinho no sistema e ganhou ${ganho} Sachês! 😻<br><br>Novo saldo: ${saldoSaches}`);
+  mostrarModal('💰', 'Sachês Recebidos!', `Você fez carinho no Floquinho e ganhou ${ganho} Sachês! 😻<br><br>Novo saldo: ${saldoSaches}`);
 }
 
 function resgatarCodigo() {
   if(codigoUsado) {
-    mostrarModal('😿', 'Código já usado', 'Você já resgatou o MIADOGRATIS! O Nexus não é trouxa miau');
+    mostrarModal('😿', 'Código já usado', 'Você já resgatou o MIADOGRATIS! Floquinho não é trouxa miau');
     return;
   }
   saldoSaches += 200;
@@ -178,13 +174,13 @@ function toggleMenu() {
 
 function abrirSuporte() {
   toggleMenu();
-  mostrarModal('🛠️', 'Suporte NYZ Interactive', 'Nossos gatinhos de TI estão compilando no Nexus. Tente miar mais tarde miau');
+  mostrarModal('🛠️', 'Suporte em Manutenção', 'Nossos gatinhos de TI estão dormindo no servidor. Tente miar mais tarde miau');
 }
 
 function verCompras() {
   toggleMenu();
   if(carrinho.length === 0) {
-    mostrarModal('🛒', 'Carrinho Vazio', 'Você ainda não comprou nada. O Nexus tá te julgando 👁️');
+    mostrarModal('🛒', 'Carrinho Vazio', 'Você ainda não comprou nada. O Floquinho tá te julgando 👁️');
   } else {
     const lista = carrinho.map(item => `• ${item.nome} - ${item.preco} Sachês`).join('<br>');
     mostrarModal('📋', `Suas Compras (${carrinho.length})`, lista);
@@ -212,14 +208,14 @@ function comprar(id, btn) {
   
   saldoSaches -= produto.preco;
   carrinho.push(produto);
-  atualizarSaldo();
+  atualizarSaldo(); // Já salva aqui
   
   btn.innerText = 'Comprado ✓';
   btn.classList.remove('bg-white', 'text-black', 'hover:bg-neutral-200');
   btn.classList.add('bg-green-600', 'text-white', 'cursor-not-allowed');
   btn.disabled = true;
   
-  mostrarModal('✅', 'Compra Confirmada!', `${STUDIO_NAME} aprovou: ${produto.nome}<br><br>Saldo restante: ${saldoSaches} Sachês`);
+  mostrarModal('✅', 'Compra Confirmada!', `CEO PhSmall aprovou: ${produto.nome}<br><br>Saldo restante: ${saldoSaches} Sachês`);
   
   setTimeout(() => {
     if(carrinho.length === 2 && !jaAvaliou) {
@@ -235,17 +231,17 @@ function avaliar(nota) {
   
   if(nota < 3) {
     icone.innerText = '😿';
-    msg.innerText = 'O Nexus ficou triste... miau';
+    msg.innerText = 'Floquinho ficou triste... miau';
     msg.className = 'text-sm h-6 mb-4 text-red-400';
   } else {
     icone.innerText = '😸';
-    msg.innerText = 'NYZ Interactive está radiante! Toma 50 Sachês de bônus!';
+    msg.innerText = 'Floquinho está radiante! Toma 50 Sachês de bônus!';
     msg.className = 'text-sm h-6 mb-4 text-green-400';
     saldoSaches += 50;
     atualizarSaldo();
   }
   
-  salvarDados();
+  salvarDados(); // Salva a avaliação
   setTimeout(() => {
     document.getElementById('modalAvaliacao').classList.add('hidden');
   }, 2000);
@@ -282,11 +278,8 @@ function renderProdutos() {
   `}).join('');
 }
 
-console.log(`%c${STUDIO_NAME} | ${STUDIO_TAGLINE}`, 'color:#ff6b00; font-size:14px; font-weight:bold;');
-
 // INICIALIZA TUDO
 renderProdutos();
 atualizarSaldo();
 </script>
-</body>
-    </html>
+  </body>
