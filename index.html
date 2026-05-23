@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Floquinho Store™ | NYZ™ Interactive</title>
+  <title>Floquinho Store | NYZ Interactive</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap');
@@ -52,7 +52,7 @@
         <div class="w-6 h-0.5 bg-white"></div>
         <div class="w-6 h-0.5 bg-white"></div>
       </button>
-      <h1 class="text-2xl font-bold">Floquinho Store™</h1>
+      <h1 class="text-2xl font-bold">Floquinho Store</h1>
       <button onclick="ganharSaches()" class="bg-orange-500/20 border border-orange-500 px-3 py-1 rounded-full hover:bg-orange-500/30">
         <span class="text-sm">💰 <span id="saldo" class="font-bold">500</span></span>
       </button>
@@ -70,10 +70,10 @@
     <!-- Lista de produtos -->
     <main class="divide-y divide-neutral-800" id="produtos"></main>
 
-    <!-- Footer -->
+    <!-- Footer - ORIGINAL MANTIDO -->
     <footer class="py-12 text-center text-neutral-500 text-sm border-t border-neutral-800 mt-8">
-      <p>NYZ™ Interactive</p>
-      <p class="mt-2">© 2026 NYZ™ Interactive. Nexus Yield Zone. Todos os direitos reservados ao Nexus.</p>
+      <p>AgainstTime Pre.</p>
+      <p class="mt-2">© 2026 Floquinho Inc. Todos os direitos reservados ao sono.</p>
     </footer>
 
   </div>
@@ -110,8 +110,8 @@
   </div>
 
 <script>
-// NYZ™ Interactive - FloqStore Simulator
-const STUDIO_NAME = "NYZ™ Interactive";
+// NYZ Interactive - FloqStore Simulator
+const STUDIO_NAME = "NYZ Interactive";
 const STUDIO_TAGLINE = "Nexus Yield Zone";
 
 const produtos = [
@@ -149,7 +149,7 @@ function ganharSaches() {
   const agora = Date.now();
   if(agora - ultimoGanho < 30000) {
     const falta = Math.ceil((30000 - (agora - ultimoGanho)) / 1000);
-    mostrarModal('⏰', 'Calma humano!', `NYZ™ tá contando sachês... Volta em ${falta}s miau`);
+    mostrarModal('⏰', 'Calma humano!', `NYZ tá contando sachês... Volta em ${falta}s miau`);
     return;
   }
   
@@ -157,7 +157,7 @@ function ganharSaches() {
   saldoSaches += ganho;
   ultimoGanho = agora;
   atualizarSaldo();
-  mostrarModal('💰', 'Sachês Recebidos!', `Você fez carinho no sistema NYZ™ e ganhou ${ganho} Sachês! 😻<br><br>Novo saldo: ${saldoSaches}`);
+  mostrarModal('💰', 'Sachês Recebidos!', `Você fez carinho no sistema e ganhou ${ganho} Sachês! 😻<br><br>Novo saldo: ${saldoSaches}`);
 }
 
 function resgatarCodigo() {
@@ -178,7 +178,7 @@ function toggleMenu() {
 
 function abrirSuporte() {
   toggleMenu();
-  mostrarModal('🛠️', 'Suporte NYZ™', 'Nossos gatinhos de TI estão compilando no Nexus. Tente miar mais tarde miau');
+  mostrarModal('🛠️', 'Suporte NYZ Interactive', 'Nossos gatinhos de TI estão compilando no Nexus. Tente miar mais tarde miau');
 }
 
 function verCompras() {
@@ -239,7 +239,7 @@ function avaliar(nota) {
     msg.className = 'text-sm h-6 mb-4 text-red-400';
   } else {
     icone.innerText = '😸';
-    msg.innerText = 'NYZ™ está radiante! Toma 50 Sachês de bônus!';
+    msg.innerText = 'NYZ Interactive está radiante! Toma 50 Sachês de bônus!';
     msg.className = 'text-sm h-6 mb-4 text-green-400';
     saldoSaches += 50;
     atualizarSaldo();
@@ -289,4 +289,4 @@ renderProdutos();
 atualizarSaldo();
 </script>
 </body>
-        </html>
+    </html>
